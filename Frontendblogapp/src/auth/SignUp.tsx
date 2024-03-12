@@ -10,12 +10,14 @@ export const SignUp = () => {
     const { register, handleSubmit} = useForm<SignUpType>();
     const navigator = useNavigate()
     const onSubmit = (data: SignUpType) => {
-        
        console.log(data)
         axios.post('http://localhost:3000/auth/SignUp', data)
         .then((res) => {
             console.log(res.data)
-            navigator('/')
+         
+            setTimeout(() => {
+              navigator('/SignIn')
+            }, 20);
         })
         .catch((err) => {
             console.log(err)
